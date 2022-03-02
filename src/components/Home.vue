@@ -1,22 +1,45 @@
 <template>
-  <div id="app">
-    <KanbanBoard v-bind:tasks="tasks" @data="updateData" @newdata="addData"/>
+  <div>
+      <h1>This is home page</h1>
+      <b-tabs v-model="activeTab">
+            <b-tab-item label="Kanban">
+               <KanbanBoard v-bind:tasks="tasks" @data="updateData" @newdata="addData"/>
+            </b-tab-item>
+
+            <b-tab-item label="Music">
+                Lorem <br>
+                ipsum <br>
+                dolor <br>
+                sit <br>
+                amet.
+            </b-tab-item>
+
+          
+
+            <b-tab-item label="Videos" >
+                Nunc nec velit nec libero vestibulum eleifend.
+                Curabitur pulvinar congue luctus.
+                Nullam hendrerit iaculis augue vitae ornare.
+                Maecenas vehicula pulvinar tellus, id sodales felis lobortis eget.
+            </b-tab-item>
+        </b-tabs>
+       
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import KanbanBoard from './components/kanban/KanbanBoard.vue'
+import KanbanBoard from './kanban/KanbanBoard.vue'
+
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
-    // HelloWorld,
-    KanbanBoard
+      KanbanBoard
   },
-  data: function () {
-    return{ 
-     todoData: [
+  data() {
+            return {
+                activeTab: 1,
+                todoData: [
           {
             id: 1,
             name: "Create a new task 1",
@@ -43,10 +66,9 @@ export default {
             status: "Completed"
           }
     ],
-        
-      }
-  },
-  computed:  {
+            }
+        },
+        computed:  {
     tasks: function () {
       let taskList = {
         "Todo": {
@@ -107,12 +129,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
